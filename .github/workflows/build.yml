@@ -1,0 +1,17 @@
+name: build
+
+on: [ push ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+        # env:
+          # CARGO_NET_GIT_FETCH_WITH_CLI: true
+      - name: build
+        run: cargo build
